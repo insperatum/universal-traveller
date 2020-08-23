@@ -1,3 +1,5 @@
+console.log("Loading engine")
+
 foo = function() {
 	$(".text").html("Foxes are small to medium-sized, omnivorous mammals belonging to several genera of the family Canidae. Foxes have a flattened skull, upright triangular ears, a pointed, slightly upturned snout, and a long bushy tail (or brush).")
 }
@@ -10,7 +12,7 @@ goto = function(key) { return function() {
 	view = views[key]
 
 	
-	$("<img/>").attr("src", view['image']).attr("class", "image")
+	$("<img/>").attr("src", "img/places/" + view['image']).attr("class", "image")
     .on('load', function() {
         var w = this.width; var h = this.height;
 
@@ -27,11 +29,11 @@ goto = function(key) { return function() {
 			if('cursor' in region){
 				a.attr("class", region['cursor']);
 			}
-			if('left' in region) {
-				a.css("left", (region['left']/w)*100 + "%");
-				a.css("top", (region['top']/h)*100 + "%");
-				a.css("width", (region['width']/w)*100 + "%");
-				a.css("height", (region['height']/h)*100 + "%");	
+			if('x' in region) {
+				a.css("left", (region['x']-region['w']/2)/w*100 + "%");
+				a.css("top", (region['y']-region['h']/2)/h*100 + "%");
+				a.css("width", (region['w']/w)*100 + "%");
+				a.css("height", (region['h']/h)*100 + "%");	
 			} else {
 				a.css("left", 0);
 				a.css("top", 0);
@@ -48,6 +50,7 @@ goto = function(key) { return function() {
 	
 }}
 
-$(document).ready( function() {
+$(document).ready(function() {
+	console.log("document ready")
 	goto(start)()
 })

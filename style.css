@@ -1,21 +1,33 @@
 /* Cursors*/
 .eye {
-	cursor: url('browneye.png') 17 9, auto;	
+	cursor: url('img/cursors/green.png') 17 9, auto;	
 }
 .bubble {
-	cursor: url('bubble4.png') 16 16, auto;	
+	cursor: url('img/cursors/bubble.png') 16 16, auto;	
 }
 .north {
 	cursor: n-resize;
 }
-.south {
-	cursor: s-resize;
+.northeast {
+	cursor: ne-resize;
 }
 .east {
 	cursor: e-resize;
 }
+.southeast {
+	cursor: se-resize;
+}
+.south {
+	cursor: s-resize;
+}
+.southwest {
+	cursor: sw-resize;
+}
 .west {
 	cursor: w-resize;
+}
+.northwest {
+	cursor: nw-resize;
 }
 
 /* Layout */
