@@ -54,6 +54,7 @@ body {
 	height: 700px;
 }
 .textouter {
+	padding-top: 5px;
 	width: 100%;
 	font-size: 20px;
 }
@@ -61,5 +62,5 @@ body {
 	color: white;
 	margin: auto;
 	background-color: rgba(0,0,0,0.5);
-	user-select: none;
+	user-select: none;;
 }
