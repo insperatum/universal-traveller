@@ -75,7 +75,7 @@ views = {
 	},
 
 	"La-Llamada": {
-		image:'Cat.329-La-Llamada-1961-1.jpg',
+		image:'Cat.329-La-Llamada-1961-1.png',
 		regions: [
 			{x: 232, y: 1292, w: 465, h: 131, cursor: 'southwest', action: goto('La-Despedida')},
 			{x: 853, y: 815, w: 105, h: 674, cursor: 'east', action: goto('Ruptura')},
