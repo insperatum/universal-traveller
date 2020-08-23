@@ -1,0 +1,43 @@
+X Y W H
+
+Cat.211-La-Despedida-1958-1
+
+363 713 54 705 Cat.146-Tres-Destinos-1956-1536x1290.jpg north
+601 570 73 644 Cat.311-Planta-Insumisa-1961-1-square.png south
+791 535 41 405 Cat.329-La-Llamada-1961-1.jpg east
+148 599 41 476 "The pathway is too narrow to move past" north
+90 587 34 482 Cat.292-Mujer-Saliendo-Del-Psicoanalista-1960-1.jpg west 
+155 1237 310 142 Cat.148-Au-Bonheur-des-Dames-1956-2.jpg southwest
+596 954 62 88 "you look like you're from far away" bubble
+700 440 106 158 Jo eye
+700 553 106 79 Burning eye
+
+Cat.292-Mujer-Saliendo-Del-Psicoanalista-1960-1
+
+175 897 112 723 "It's locked" west
+844 928 98 662 Cat.211-La-Despedida-1958-1.png south
+468 629 224 186 "who are you?" bubble
+
+Cat.148-Au-Bonheur-des-Dames-1956-2
+
+1239 1304 177 938 "in a rush" bubble
+823 1904 656 192 landingspot.png south
+286 1470 170 857 "in a rush" bubble
+1012 835 93 330 Cat.211-La-Despedida-1958-1.png north
+
+Cat.146-Tres-Destinos-1956-1536x1290.jpg
+
+586 1236 140 107 Cat.211-La-Despedida-1958-1.png south
+1072 1236 100 107 Cat.211-La-Despedida-1958-1.png south
+368 829 169 310 "they dont seem to hear you" bubble
+833 574 131 299 "they dont seem to hear you" bubble
+1292 814 143 339 "they dont seem to hear you" bubble
+
+Cat.311-Planta-Insumisa-1961-1-square.png
+
+578 420 227 203 "ah, i seldom have visitors. let alone one from another planet. tell me about the plant life there. ours have almost entirely left us." bubble
+828 1094 203 194 Cat.211-La-Despedida-1958-1.png northeast
+
+Cat.329-La-Llamada-1961-1.jpg
+232 1292 465 131 Cat.211-La-Despedida-1958-1.png southwest
+
