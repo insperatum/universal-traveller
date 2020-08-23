@@ -5,14 +5,25 @@ foo = function() {
 }
 
 text = function(value) { return function() {
-	$(".text").html(value)
+    $(".text").text("")
+    function typeName(iteration) {
+        if (iteration != value.length) 
+	        setTimeout(function() {
+	            $('.text').text( $('.text').text() + value[iteration] );
+	            typeName(iteration+1);
+	        }, 35);
+    }
+    
+    typeName(0);
+
+	// $(".text").html(value)
 }}
 
 goto = function(key) { return function() {
 	view = views[key]
 
 	
-	$("<img/>").attr("src", "img/places/" + view['image']).attr("class", "image")
+	$("<img/>").attr("src", (view['image'].startsWith("http://") ? "" : "img/places/") + view['image']).attr("class", "image")
     .on('load', function() {
         var w = this.width; var h = this.height;
 

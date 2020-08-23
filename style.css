@@ -62,7 +62,8 @@ body {
 .text {
 	color: white;
 	margin: auto;
-	width: 800px;
+	width: 450px;
+	text-align: left;
 	background-color: rgba(0,0,0,0.5);
 	user-select: none;
 }

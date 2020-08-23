@@ -8,16 +8,16 @@ views = {
 		regions: [
 			{x: 519, y: 426, w:63, h:149, cursor: "north", action: goto("Au-Bonheur")},
 			{x: 397, y: 732, w:554, h:77, cursor: "south"},
-			// {x: 355, y: 334, w:138, h:106, cursor: "eye", action: goto("painting")},
+			{x: 355, y: 334, w:138, h:106, cursor: "eye", action: goto("painting")},
 		]	
 	},
 	
-	// painting: {
-	// 	image: "http://archive.thedali.org/MWEBimages/Collection%20Images/OILS_images%20saved%20for%20Web/2000.5_Arch-Rem_web.jpg",
-	// 	regions: [
-	// 		{cursor: "south", action: goto("landingspot")}
-	// 	]
-	// },
+	painting: {
+		image: "http://archive.thedali.org/MWEBimages/Collection%20Images/OILS_images%20saved%20for%20Web/2000.5_Arch-Rem_web.jpg",
+		regions: [
+			{cursor: "south", action: goto("landingspot")}
+		]
+	},
 
 	"La-Despedida": {
 		image:'Cat.211-La-Despedida-1958-1.png',
@@ -46,9 +46,9 @@ views = {
 	"Au-Bonheur": {
 		image:'Cat.148-Au-Bonheur-des-Dames-1956-2.jpg',
 		regions: [
-			{x: 1239, y: 1304, w: 177, h: 938, cursor: 'bubble', action: text("in a rush")},
-			{x: 823, y: 1904, w: 656, h: 192, cursor: 'south', action: goto('landingspot.png')},
-			{x: 286, y: 1470, w: 170, h: 857, cursor: 'bubble', action: text("in a rush")},
+			{x: 1239, y: 1304, w: 177, h: 938, cursor: 'bubble', action: text("she looks like she's in a rush")},
+			{x: 823, y: 1904, w: 656, h: 192, cursor: 'south', action: goto('landingspot')},
+			{x: 286, y: 1470, w: 170, h: 857, cursor: 'bubble', action: text("she's going somewhere fast!")},
 			{x: 1012, y: 835, w: 93, h: 330, cursor: 'north', action: goto('La-Despedida')},
 		]
 	},
@@ -59,8 +59,8 @@ views = {
 			{x: 586, y: 1236, w: 140, h: 107, cursor: 'south', action: goto('La-Despedida')},
 			{x: 1072, y: 1236, w: 100, h: 107, cursor: 'south', action: goto('La-Despedida')},
 			{x: 368, y: 829, w: 169, h: 310, cursor: 'bubble', action: text("they dont seem to hear you")},
-			{x: 833, y: 574, w: 131, h: 299, cursor: 'bubble', action: text("they dont seem to hear you")},
-			{x: 1292, y: 814, w: 143, h: 339, cursor: 'bubble', action: text("they dont seem to hear you")},
+			{x: 833, y: 574, w: 131, h: 299, cursor: 'bubble', action: text("he is singing")},
+			{x: 1292, y: 814, w: 143, h: 339, cursor: 'bubble', action: text("a bit far away to hear")},
 		]
 	},
 
