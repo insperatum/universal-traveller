@@ -1,0 +1,56 @@
+/* Cursors*/
+.eye {
+	cursor: url('browneye.png') 17 9, auto;	
+}
+.bubble {
+	cursor: url('bubble4.png') 16 16, auto;	
+}
+.north {
+	cursor: n-resize;
+}
+.south {
+	cursor: s-resize;
+}
+.east {
+	cursor: e-resize;
+}
+.west {
+	cursor: w-resize;
+}
+
+/* Layout */
+body {
+	background-color: black;
+}
+.outer {
+	height: 100%;
+	text-align: center;
+}
+.inner {
+	height: 85%;
+	cursor: crosshair;
+	position:relative;
+	display: inline-block;
+}
+.inner a{
+	display: block;      
+	position: absolute;
+}
+.image {
+	max-height: 100%;
+}
+.textouter {
+	position: absolute;
+	bottom: 5%;
+	height:10%;
+	text-align: center;
+	width: 100%;
+	font-size: 20px;
+}
+.text {
+	color: white;
+	margin: auto;
+	width: 800px;
+	background-color: rgba(0,0,0,0.5);
+	user-select: none;
+}
