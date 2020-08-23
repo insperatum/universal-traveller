@@ -37,7 +37,7 @@ views = {
 	"Mujer-Saliendo": {
 		image:'Cat.292-Mujer-Saliendo-Del-Psicoanalista-1960-1.jpg',
 		regions: [
-			{x: 175, y: 897, w: 112, h: 723, cursor: 'west', action: text("It's locked")},
+			{x: 175, y: 897, w: 112, h: 723, cursor: 'west', action: goto("Ingravidez")},
 			{x: 844, y: 928, w: 98, h: 662, cursor: 'south', action: goto('La-Despedida')},
 			{x: 468, y: 629, w: 224, h: 186, cursor: 'bubble', action: text("who are you?")},
 		]
@@ -61,6 +61,8 @@ views = {
 			{x: 368, y: 829, w: 169, h: 310, cursor: 'bubble', action: text("they dont seem to hear you")},
 			{x: 833, y: 574, w: 131, h: 299, cursor: 'bubble', action: text("he is singing")},
 			{x: 1292, y: 814, w: 143, h: 339, cursor: 'bubble', action: text("a bit far away to hear")},
+			{x: 1047, y: 831, w: 50, h: 235, cursor: 'north', action:goto("Tower-Release")},
+			{x: 526, y: 713, w: 79, h: 277, cursor: 'north', action:goto("Bordando")}
 		]
 	},
 
@@ -76,6 +78,66 @@ views = {
 		image:'Cat.329-La-Llamada-1961-1.jpg',
 		regions: [
 			{x: 232, y: 1292, w: 465, h: 131, cursor: 'southwest', action: goto('La-Despedida')},
+			{x: 853, y: 815, w: 105, h: 674, cursor: 'east', action: goto('Ruptura')},
+			{x: 853, y: 330, w: 105, h: 289, cursor: 'bubble', action: text('You may want to find a companion before passing through...')},
+
+		]
+	},
+
+	"Ingravidez": {
+		image:'Cat.359-Fenomeno-De-Ingravidez-1963-1.jpg',
+		regions:[
+			{x: 876, y: 702, w: 108, h: 1235, cursor: 'east', action: goto("Mujer-Saliendo")},
+			{x: 341, y: 527, w: 155, h: 155, cursor:'bubble', action: text("Shhh... I'm concentrating!")}
+		]
+	},
+
+	"Tower-Release": {
+		image:'TowerRelease-Varo.jpg',
+		regions:[
+			{x: 753, y: 816, w: 45, h: 358, cursor: 'south', action: goto("Tres-Destinos")},
+			{x: 796, y: 707, w: 41, h: 141, cursor:'south', action: goto("Tres-Destinos")},
+		]
+	},
+
+	"Bordando": {
+		image:'Cat.304-Bordando-El-manto-1960-1.jpg',
+		regions:[
+			{x: 545, y: 579, w: 161, h: 68, cursor: 'south', action: goto("Tres-Destinos")},
+		]
+	},
+
+	"Ruptura": {
+		image:"Ruptura.jpg",
+		regions:[
+			{x: 465, y: 791, w: 135, h: 263, cursor: 'north', action: goto("BlueRoom")},
+			{x: 352, y: 1079, w: 131, h: 504, cursor: 'bubble', action: text("This is the house of the six keepers of spirit: vision, discernment, gratitude, celebration, tenderness, and birth. We used to be seven but we've forgotten my name.")},
+			{x: 465, y: 1451, w: 930, h: 99, cursor: 'south', action: goto("La-Llamada")}
+		]
+	},
+
+	"BlueRoom": {
+		image:"BlueRoomVaro.jpeg",
+		regions:[
+			{x: 666, y: 301, w: 90, h: 366, cursor: 'east', action: goto("Ruptura")},
+			{x: 542, y: 605, w: 515, h: 71, cursor: 'south', action: goto("CatPins")},
+			{x: 38, y: 387, w: 76, h: 460, cursor: 'west', action: goto("GrandfatherClocks")},
+			{x: 342, y: 322, w: 62, h: 130, cursor: 'bubble', action: text("Humming softly...")},
+		]
+	},
+
+	"CatPins": {
+		image:"CatPinsVaro.jpg",
+		regions:[
+			{x: 171, y: 389, w: 147, h: 390, cursor: 'northwest', action: goto("BlueRoom")},
+		]
+	},
+
+	"GrandfatherClocks": {
+		image:"GrandfatherClocksVaro.jpg",
+		regions:[
+			{x: 502, y: 832, w: 683, h: 73, cursor: 'south', action: goto("BlueRoom")},
 		]
 	}
+
 };
