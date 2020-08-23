@@ -36,10 +36,12 @@ body {
 }
 .outer {
 	height: 100%;
+	max-width: 1px;
 	text-align: center;
+	margin: auto;
+	display: table;
 }
 .inner {
-	height: 600;
 	cursor: crosshair;
 	position:relative;
 	display: inline-block;
@@ -49,12 +51,12 @@ body {
 	position: absolute;
 }
 .image {
-	max-height: 100%;
+	height: 700px;
 }
 .textouter {
-	position: absolute;
-	top: 615;
-	height:200;
+	/*position: absolute;*/
+	top: 720;
+	height:150;
 	text-align: center;
 	width: 100%;
 	font-size: 20px;
@@ -62,7 +64,6 @@ body {
 .text {
 	color: white;
 	margin: auto;
-	width: 450px;
 	text-align: left;
 	background-color: rgba(0,0,0,0.5);
 	user-select: none;
