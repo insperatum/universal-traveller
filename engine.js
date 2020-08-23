@@ -22,41 +22,42 @@ text = function(value) { return function() {
 goto = function(key) { return function() {
 	view = views[key]
 
-	
-	$("<img/>").attr("src", (view['image'].startsWith("http://") ? "" : "img/places/") + view['image']).attr("class", "image")
-    .on('load', function() {
+	new_img = $("<img/>").attr("src", (view['image'].startsWith("http://") ? "" : "img/places/") + view['image']).attr("class", "image")
+    new_img.on('load', function() {
         var w = this.width; var h = this.height;
 
-        $(".inner").empty()
-        $(".inner").append(this)
-        $(".text").empty()
-        if('text' in view) {
-        	$(".text").text(view['text'])
-        }
+        $(".inner").animate({'opacity': 0}, 200, "swing", function() {
+			$(".inner").empty()
+	        $(".inner").append(new_img)
+	        $(".inner").animate({'opacity': 1}, 200, "swing")
+	        $(".text").empty()
+	        if('text' in view) {
+	        	$(".text").text(view['text'])
+	        }
         
 
-        view['regions'].forEach(function(region) {
-			a = $("<a></a>")
-			if('cursor' in region){
-				a.attr("class", region['cursor']);
-			}
-			if('x' in region) {
-				a.css("left", (region['x']-region['w']/2)/w*100 + "%");
-				a.css("top", (region['y']-region['h']/2)/h*100 + "%");
-				a.css("width", (region['w']/w)*100 + "%");
-				a.css("height", (region['h']/h)*100 + "%");	
-			} else {
-				a.css("left", 0);
-				a.css("top", 0);
-				a.css("width", "100%");
-				a.css("height", "100%");
-			}
-			if('action' in region) {
-				a.click(region['action']);
-			}
-			console.log(a)
-			
-			$(".inner").append(a);
+	        view['regions'].forEach(function(region) {
+				a = $("<a></a>")
+				if('cursor' in region){
+					a.attr("class", region['cursor']);
+				}
+				if('x' in region) {
+					a.css("left", (region['x']-region['w']/2)/w*100 + "%");
+					a.css("top", (region['y']-region['h']/2)/h*100 + "%");
+					a.css("width", (region['w']/w)*100 + "%");
+					a.css("height", (region['h']/h)*100 + "%");	
+				} else {
+					a.css("left", 0);
+					a.css("top", 0);
+					a.css("width", "100%");
+					a.css("height", "100%");
+				}
+				if('action' in region) {
+					a.click(region['action']);
+				}
+
+				$(".inner").append(a);
+			})
 		})
 	});
 	
