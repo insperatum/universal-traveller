@@ -43,6 +43,7 @@ goto = function(key) { return function() {
 			if('action' in region) {
 				a.click(region['action']);
 			}
+			console.log(a)
 			
 			$(".inner").append(a);
 		})

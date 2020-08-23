@@ -39,7 +39,7 @@ body {
 	text-align: center;
 }
 .inner {
-	height: 85%;
+	height: 600;
 	cursor: crosshair;
 	position:relative;
 	display: inline-block;
@@ -53,8 +53,8 @@ body {
 }
 .textouter {
 	position: absolute;
-	bottom: 5%;
-	height:10%;
+	top: 615;
+	height:200;
 	text-align: center;
 	width: 100%;
 	font-size: 20px;
