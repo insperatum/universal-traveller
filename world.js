@@ -79,8 +79,12 @@ views = {
 		regions: [
 			{x: 232, y: 1292, w: 465, h: 131, cursor: 'southwest', action: goto('La-Despedida')},
 			{x: 853, y: 815, w: 105, h: 674, cursor: 'east', action: goto('Ruptura')},
-			{x: 853, y: 330, w: 105, h: 289, cursor: 'bubble', action: text('You may want to find a companion before passing through...')},
-
+			{x: 854, y: 756, w: 66, h: 557, cursor: 'bubble', action: text('You may want to find a companion before passing through...')},
+			{x: 232, y: 1292, w: 465, h: 131, cursor: 'southwest', action: goto('La-Despedida')},
+			{x: 325, y:990, w:185, h:207, cursor: 'bubble', action: text("He doesn't seem to talk much")},
+			{x: 721, y:1193, w:378, h:262, cursor: 'bubble', action: text('Excuse me')},
+			{x: 475, y:443, w:114, h:153, cursor: 'bubble', action: text("The corridor of the sleeping sentinels... you've never seen such a thing on your planet?")},
+			{x: 852, y:77, w:57, h:202, cursor: 'eye', action: text('Jugglers')},
 		]
 	},
 
