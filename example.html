@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				background-color: black;
+			}
+			.outer {
+				height: 100%;
+				text-align: center;
+			}
+			.image {
+				max-width: 100%;
+				max-height: 85%;
+				/*cursor: url(bluegreyeye.png);*/
+				
+				cursor: crosshair;
+			}
+			.textouter {
+				position: absolute;
+				bottom: 3%;
+				text-align: center;
+				width: 100%;
+				font-size: 20px;
+			}
+			.text {
+				color: white;
+				margin: auto;
+				width: 800px;
+				background-color: rgba(0,0,0,0.5);
+				/*padding-top: 20px;*/
+			}
+			.eye {
+				/*cursor: url('bluegreyeye_small.png') 17 9, auto;	*/
+				/*cursor: url('greyeye2.png') 17 9, auto;	*/
+				cursor: url('greyeye2wborder.png') 17 9, auto;	
+			}
+		</style>
+	</head>
+<body>
+
+<div class="outer">
+	<img class="image"
+		 usemap="#map"
+		 src="landingspot.png" 
+		 />
+
+	<div class="textouter">
+		<div class="text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam est est, eleifend sit amet tempus in, consequat non augue. Pellentesque laoreet erat urna, id interdum metus finibus nec. Etiam laoreet efficitur mi, sed hendrerit enim facilisis et. Integer ultricies dolor vel odio volutpat, sit amet pellentesque libero vulputate.
+		</div>
+	</div>
+</div>
+
+<map name="map">
+  	<area class="eye" shape="rect" coords="260,250,380,340"  href="http://archive.thedali.org/MWEBimages/Collection%20Images/OILS_images%20saved%20for%20Web/2000.5_Arch-Rem_web.jpg" >
+</map>
+
+</body>
+</html>
