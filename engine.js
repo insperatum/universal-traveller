@@ -1,22 +1,26 @@
 console.log("Loading engine")
 
-foo = function() {
-	$(".text").html("Foxes are small to medium-sized, omnivorous mammals belonging to several genera of the family Canidae. Foxes have a flattened skull, upright triangular ears, a pointed, slightly upturned snout, and a long bushy tail (or brush).")
+clear_text = function() {
+    $(".text").empty()
+    if(typeof text_anim !== 'undefined') {
+    	clearTimeout(text_anim);
+    	console.log("clearing text anim")
+    	delete text_anim;
+    }
 }
 
 text = function(value) { return function() {
-    $(".text").text("")
-    function typeName(iteration) {
-        if (iteration != value.length) 
-	        setTimeout(function() {
-	            $('.text').text( $('.text').text() + value[iteration] );
-	            typeName(iteration+1);
+    clear_text()
+    function typewriter(iteration) {
+        if (iteration != value.length) {
+	        text_anim = setTimeout(function() {
+	            $('.text').text(value.slice(0, iteration+1));
+	            typewriter(iteration+1);
 	        }, 35);
+	    }
     }
     
-    typeName(0);
-
-	// $(".text").html(value)
+    typewriter(0);
 }}
 
 goto = function(key) { return function() {
@@ -30,7 +34,7 @@ goto = function(key) { return function() {
 			$(".inner").empty()
 	        $(".inner").append(new_img)
 	        $(".inner").animate({'opacity': 1}, 200, "swing")
-	        $(".text").empty()
+	        clear_text()
 	        if('text' in view) {
 	        	$(".text").text(view['text'])
 	        }
