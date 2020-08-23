@@ -54,17 +54,12 @@ body {
 	height: 700px;
 }
 .textouter {
-	/*position: absolute;*/
-	top: 720;
-	height:150;
-	text-align: center;
 	width: 100%;
 	font-size: 20px;
 }
 .text {
 	color: white;
 	margin: auto;
-	text-align: left;
 	background-color: rgba(0,0,0,0.5);
 	user-select: none;
 }
