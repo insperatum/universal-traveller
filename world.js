@@ -1,8 +1,31 @@
 console.log("Loading world")
 
-start = "landingspot";
+start = "closedeyes";
 
 views = {
+
+	closedeyes: {
+		image: 'closedeyes.png',
+		regions: [
+			{x:790, y:306, w:58, h:28, cursor:"bubble", actions: [set("eye", "brown"), goto("earthhome")]},
+			{x:790, y:380, w:57, h:26, cursor:"bubble", actions: [set("eye", "hazel"), goto("earthhome")]},
+			{x:790, y:451, w:58, h:26, cursor:"bubble", actions: [set("eye", "green"), goto("earthhome")]},
+			{x:790, y:526, w:57, h:28, cursor:"bubble", actions: [set("eye", "grey"), goto("earthhome")]}
+		]
+	},
+
+	earthhome: {
+		image: 'earthhome.png', 
+		regions: [
+			{x:86, y:420, w:137, h:117, cursor:"eye", action: text("How did this tree get so tiny?")},
+			{x:72, y:737, w:149, h:122, cursor:"eye", action: text("Ouch!           Oops...")},
+			{x:99, y:579, w:112, h:167, cursor:"eye", action: text("Mmmmmmmm...        it smells so sweet.")},
+			{x:456, y:562, w:222, h:250, cursor:"eye", action: text("Please... ... take a reminder of home.")},
+			{x:771, y:335, w:255, h:363, cursor:"north", action: goto("closedeyes")}
+		]
+	},
+
+
 	landingspot: {
 		image: 'landingspot.png',
 		regions: [

@@ -1,6 +1,15 @@
 /* Cursors*/
-.eye {
+.eye-grey {
+	cursor: url('img/cursors/grey.png') 17 9, auto;	
+}
+.eye-brown {
+	cursor: url('img/cursors/brown.png') 17 9, auto;	
+}
+.eye-green {
 	cursor: url('img/cursors/green.png') 17 9, auto;	
+}
+.eye-hazel {
+	cursor: url('img/cursors/hazel.png') 17 9, auto;	
 }
 .bubble {
 	cursor: url('img/cursors/bubble.png') 16 16, auto;	

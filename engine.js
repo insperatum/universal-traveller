@@ -23,6 +23,10 @@ text = function(value) { return function() {
     typewriter(0);
 }}
 
+set = function(key, value) { return function() {
+	localStorage.setItem(key, value)
+}}
+
 goto = function(key) { return function() {
 	view = views[key]
 
@@ -43,7 +47,11 @@ goto = function(key) { return function() {
 	        view['regions'].forEach(function(region) {
 				a = $("<a></a>")
 				if('cursor' in region){
-					a.attr("class", region['cursor']);
+					if(region['cursor']=='eye') {
+						a.attr("class", "eye-" + localStorage.getItem("eye"));
+					} else {
+						a.attr("class", region['cursor']);	
+					}
 				}
 				if('x' in region) {
 					a.css("left", (region['x']-region['w']/2)/w*100 + "%");
@@ -58,6 +66,9 @@ goto = function(key) { return function() {
 				}
 				if('action' in region) {
 					a.click(region['action']);
+				}
+				if('actions' in region) {
+					region['actions'].forEach(action => a.click(action))
 				}
 
 				$(".inner").append(a);
