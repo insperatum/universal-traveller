@@ -45,10 +45,11 @@ body {
 }
 .outer {
 	height: 100%;
-	text-align: center;
+	max-width: 1px;
+	margin: auto;
+	display: table;
 }
 .inner {
-	height: 600;
 	cursor: crosshair;
 	position:relative;
 	display: inline-block;
@@ -58,21 +59,17 @@ body {
 	position: absolute;
 }
 .image {
-	max-height: 100%;
+	height: 700px;
 }
 .textouter {
-	position: absolute;
-	top: 615;
-	height:200;
-	text-align: center;
+	padding-top: 5px;
 	width: 100%;
 	font-size: 20px;
 }
 .text {
+	text-align: left;
 	color: white;
 	margin: auto;
-	width: 450px;
-	text-align: left;
 	background-color: rgba(0,0,0,0.5);
-	user-select: none;
+	user-select: none;;
 }
