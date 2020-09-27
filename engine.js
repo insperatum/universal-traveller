@@ -1,10 +1,9 @@
-console.log("Loading engine")
+localStorage.clear()
 
-clear_text = function() {
+clear_text = function () {
     $(".text").empty()
     if(typeof text_anim !== 'undefined') {
     	clearTimeout(text_anim);
-    	console.log("clearing text anim")
     	delete text_anim;
     }
 }
@@ -28,9 +27,12 @@ set = function(key, value) { return function() {
 }}
 
 goto = function(key) { return function() {
+	localStorage.setItem("previousView", localStorage.getItem("currentView"))
+	localStorage.setItem("currentView", key)
+
 	view = views[key]
 
-	new_img = $("<img/>").attr("src", (view['image'].startsWith("http://") ? "" : "img/places/") + view['image']).attr("class", "image")
+	new_img = $("<img/>").attr("src", (view['image'].startsWith("http") ? "" : "img/places/") + view['image']).attr("class", "image")
     new_img.on('load', function() {
         var w = this.width; var h = this.height;
 
@@ -44,7 +46,11 @@ goto = function(key) { return function() {
 	        }
         
 
-	        view['regions'].forEach(function(region) {
+			view['regions'].forEach(function (region) {
+				if('item' in region && localStorage.getItem(region['item'])) {
+					return
+				}
+
 				a = $("<a></a>")
 				if('cursor' in region){
 					if(region['cursor']=='eye') {
@@ -64,13 +70,21 @@ goto = function(key) { return function() {
 					a.css("width", "100%");
 					a.css("height", "100%");
 				}
+				if ('image' in region) {
+					a.css("background-image", 'url(' + region['image'] + ')')
+					a.css("background-repeat", "no-repeat")
+					a.css("background-size", "contain")
+				}
 				if('action' in region) {
 					a.click(region['action']);
 				}
 				if('actions' in region) {
 					region['actions'].forEach(action => a.click(action))
 				}
-
+				if ('item' in region) {
+					a.click(function(){$(a).hide()})
+					a.click(set(region['item'], true))
+				}
 				$(".inner").append(a);
 			})
 		})
@@ -79,6 +93,12 @@ goto = function(key) { return function() {
 }}
 
 $(document).ready(function() {
-	console.log("document ready")
 	goto(start)()
+	$(".inventory-icon").click(function () {
+		if (localStorage.getItem("currentView") == "inventory") {
+			goto(localStorage.getItem("previousView"))()
+		} else {
+			goto("inventory")()
+		}
+	})
 })

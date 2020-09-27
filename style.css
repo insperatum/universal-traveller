@@ -48,6 +48,7 @@ body {
 	max-width: 1px;
 	margin: auto;
 	display: table;
+	position: relative;
 }
 .inner {
 	cursor: crosshair;
@@ -60,6 +61,10 @@ body {
 }
 .image {
 	height: 700px;
+}
+.overlay {
+	position: absolute;
+	top: 0;
 }
 .textouter {
 	padding-top: 5px;

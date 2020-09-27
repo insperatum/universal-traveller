@@ -1,8 +1,12 @@
-console.log("Loading world")
-
 start = "closedeyes";
+// start = "landingspot";
+// start = "inventory"
 
 views = {
+	inventory: {
+		image: 'https://selency.imgix.net/4756d09b-4f0a-4b2d-b903-33971be605d6/large-distressed-turkish-rug-285x200-cm-tribal-wool-vintage-pink-red-beige_original.png?bg=0FFF&fit=fill&auto=format%2Ccompress&w=600&h=600&meta_format=product_og',
+		regions: []
+	},
 
 	closedeyes: {
 		image: 'closedeyes.png',
@@ -21,7 +25,14 @@ views = {
 			{x:72, y:737, w:149, h:122, cursor:"eye", action: text("Ouch!           Oops...")},
 			{x:99, y:579, w:112, h:167, cursor:"eye", action: text("Mmmmmmmm...        it smells so sweet.")},
 			{x:456, y:562, w:222, h:250, cursor:"eye", action: text("Please... ... take a reminder of home.")},
-			{x:771, y:335, w:255, h:363, cursor:"north", action: goto("closedeyes")}
+			{x:771, y:335, w:255, h:363, cursor:"north", action: goto("closedeyes")},
+			{x:271, y:735, w:500, h:163, cursor:"south", action: goto("landingspot")},
+			{
+				x: 671, y: 635, w: 100, h: 100, item: "frog",
+				image: "https://i1.wp.com/www.markscherz.com/wp-content/uploads/Boophis-nauticus_Mayotte_DSC1724_FGZC4968maybe.png?w=587&h=375",
+				action: text("A frog!")
+
+			}
 		]
 	},
 
@@ -30,7 +41,7 @@ views = {
 		image: 'landingspot.png',
 		regions: [
 			{x: 519, y: 426, w:63, h:149, cursor: "north", action: goto("Au-Bonheur")},
-			{x: 397, y: 732, w:554, h:77, cursor: "south"},
+			{x: 397, y: 732, w:554, h:77, cursor: "south", action: goto('earthhome')},
 			{x: 355, y: 334, w:138, h:106, cursor: "eye", action: goto("painting")},
 		]	
 	},
