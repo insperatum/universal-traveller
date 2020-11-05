@@ -1,5 +1,5 @@
-// start = "closedeyes";
-start = "landingspot";
+start = "closedeyes";
+// start = "landingspot";
 // start = "inventory"
 
 views = {
@@ -11,10 +11,10 @@ views = {
 	closedeyes: {
 		image: 'closedeyes.png',
 		regions: [
-			{x:790, y:306, w:58, h:28, cursor:"bubble", actions: [set("eye", "brown"), goto("earthhome")]},
-			{x:790, y:380, w:57, h:26, cursor:"bubble", actions: [set("eye", "hazel"), goto("earthhome")]},
-			{x:790, y:451, w:58, h:26, cursor:"bubble", actions: [set("eye", "green"), goto("earthhome")]},
-			{x:790, y:526, w:57, h:28, cursor:"bubble", actions: [set("eye", "grey"), goto("earthhome")]}
+			{x:790, y:306, w:58, h:28, cursor:"bubble", actions: [set("eye", "brown"), goto("landingspot")]},
+			{x:790, y:380, w:57, h:26, cursor:"bubble", actions: [set("eye", "hazel"), goto("landingspot")]},
+			{x:790, y:451, w:58, h:26, cursor:"bubble", actions: [set("eye", "green"), goto("landingspot")]},
+			{x:790, y:526, w:57, h:28, cursor:"bubble", actions: [set("eye", "grey"), goto("landingspot")]}
 		]
 	},
 
