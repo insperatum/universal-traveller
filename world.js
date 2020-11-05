@@ -1,5 +1,5 @@
-start = "closedeyes";
-// start = "landingspot";
+// start = "closedeyes";
+start = "landingspot";
 // start = "inventory"
 
 views = {
@@ -41,7 +41,7 @@ views = {
 		image: 'landingspot.png',
 		regions: [
 			{x: 519, y: 426, w:63, h:149, cursor: "north", action: goto("Au-Bonheur")},
-			{x: 397, y: 732, w:554, h:77, cursor: "south", action: goto('earthhome')},
+			//{x: 397, y: 732, w:554, h:77, cursor: "south", action: goto('earthhome')},
 			{x: 355, y: 334, w:138, h:106, cursor: "eye", action: goto("painting")},
 		]	
 	},
