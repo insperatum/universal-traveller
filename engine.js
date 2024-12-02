@@ -8,10 +8,20 @@ clear_text = function () {
     }
 }
 
-text = function(value) { return function() {
+cond = function(pred, action) { return function(onComplete=function(){}) {
+	if(pred()) {
+		action(onComplete)
+	} else {
+		onComplete()
+	}
+}}
+
+text = function(value) { return function(onComplete=function(){}) {
     clear_text()
     function typewriter(iteration) {
-        if (iteration != value.length) {
+        if (iteration == value.length) {
+			onComplete()
+		} else {
 	        text_anim = setTimeout(function() {
 	            $('.text').text(value.slice(0, iteration+1));
 	            typewriter(iteration+1);
@@ -22,9 +32,62 @@ text = function(value) { return function() {
     typewriter(0);
 }}
 
+answers = function(dict) { return function(onComplete=function(){}) {
+	for (var key in dict) {
+		if (dict.hasOwnProperty(key)) {
+			(function(key) {
+				var a = $("<div style='padding-top:0.5em; cursor: pointer; color: yellow;'></div>").attr("class", "answer").text("> " + dict[key])
+
+				a.click(function() {
+					console.log("clicked" + key)
+					localStorage.setItem("answer", key)
+					onComplete();
+				})
+	
+				a.css("opacity", 0)
+				$('.text').append(a)
+	
+				// setTimeout(function() {
+					a.animate({'opacity': 1}, 400, "swing")
+				// }, 200)
+			})(key);
+		}
+	}
+}}
+getAnswer = () => localStorage.getItem("answer")
+
+rightImage = function(image) { return function(onComplete=function(){}) {
+
+	var f = function() {
+		var a = $(".right").append($("<img/>").attr("src", image).attr("width", "100%"))
+		a.css("opacity", 0)
+		a.animate({'opacity': 1}, 800, "swing", onComplete)
+	}
+
+	// If it's not empty, fade out
+	if($(".right").children().length > 0) {
+		$(".right").children().animate({'opacity': 0}, 300, "swing", function() {
+			$(".right").empty()
+			f()
+		})
+	} else {
+		f()
+	}
+}}
+
 set = function(key, value) { return function() {
 	localStorage.setItem(key, value)
 }}
+
+
+doActions = function(actions) {
+	actions[0](onComplete=function(){
+		if(actions.length > 1) {
+			doActions(actions.slice(1))
+		}
+	})
+}
+
 
 goto = function(key) { return function() {
 	localStorage.setItem("previousView", localStorage.getItem("currentView"))
@@ -36,15 +99,21 @@ goto = function(key) { return function() {
     new_img.on('load', function() {
         var w = this.width; var h = this.height;
 
-        $(".inner").animate({'opacity': 0}, 200, "swing", function() {
+		$(".right").animate({'opacity': 0}, 200, "swing")
+        $(".inner").animate({'opacity': 0}, 400, "swing", function() {
 			$(".inner").empty()
+			$(".right").empty()
+			
 	        $(".inner").append(new_img)
-	        $(".inner").animate({'opacity': 1}, 200, "swing")
+	        $(".inner").animate({'opacity': 1}, 800, "swing")
+			$(".right").css("width", 'rightWidth' in view ? view['rightWidth'] + "px" : "0")
+			$(".right").animate({'opacity': 1}, 200, "swing")
 	        clear_text()
-	        if('text' in view) {
-	        	$(".text").text(view['text'])
-	        }
+	        // if('text' in view) {
+	        // 	$(".text").text(view['text'])
+	        // }
         
+			if('actions' in view) {doActions(view['actions'])}
 
 			view['regions'].forEach(function (region) {
 				if('item' in region && localStorage.getItem(region['item'])) {
@@ -75,11 +144,11 @@ goto = function(key) { return function() {
 					a.css("background-repeat", "no-repeat")
 					a.css("background-size", "contain")
 				}
-				if('action' in region) {
-					a.click(region['action']);
-				}
+				// if('action' in region) {
+				// 	a.click(region['action']);
+				// }
 				if('actions' in region) {
-					region['actions'].forEach(action => a.click(action))
+					a.click(function(){doActions(region['actions'])})
 				}
 				if ('item' in region) {
 					a.click(function(){$(a).hide()})
