@@ -38,6 +38,9 @@
 .northwest {
 	cursor: nw-resize;
 }
+.speaker {
+	cursor: url('img/cursors/speaker.png') 10 10, auto;	
+}
 
 /* Layout */
 body {
@@ -45,11 +48,24 @@ body {
 }
 .outer {
 	height: 100%;
-	max-width: 1px;
-	margin: auto;
+	/* max-width: 1px; */
+	margin: 50px auto 0 auto;
 	display: table;
 	position: relative;
+	
 }
+
+
+.left {
+	flex:1;
+}
+.right {
+	width:400px;
+	flex:1;
+	padding-left:40px;
+	overflow: hidden;
+}
+
 .inner {
 	cursor: crosshair;
 	position:relative;
@@ -77,4 +93,50 @@ body {
 	margin: auto;
 	background-color: rgba(0,0,0,0.5);
 	user-select: none;;
+}
+.rightText {
+	text-align: left;
+	color: white;
+	user-select: none;
+	padding-top: 15px;
+	font-size: 20px;
+}
+
+
+
+.text span {
+	vertical-align: middle;
+	margin-right: 20px;
+}
+
+
+
+.answer {
+	color: #00c4ff;
+	padding-top:0.5em;
+	cursor: pointer; 
+}
+
+.dancer {
+	color:#e5835e;font-family:UnifrakturCook;
+}
+
+.cat1 {
+	color:#ff4046;font-size:50px;font-family:'Tsukimi Rounded';
+}
+
+.cat2 {
+	color:#be935c;
+	font-family:'Tsukimi Rounded';
+}
+
+.weaver {
+	color:white;
+	font-family:'Alumni Sans Pinstripe';
+}
+
+.historian {
+	color: #ad6c45;
+	font-style: italic;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

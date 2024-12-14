@@ -2,67 +2,214 @@
 // start = "landingspot";
 // start = "inventory"
 start = "gate"
+// start = "cats"
+// start = "historian"
 
 views = {
 	gate: {
-		image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Urdiain_-_Puerta_02.jpg",
+		image: "gateclosed.png",
 		regions: [
-			{x: 1200, y: 1400, w: 1400, h: 1600, cursor: "north", actions: [goto("historian")]}
+			{x: 4000, y: 4000, w: 4000, h: 4000, cursor: "north", actions: [
+				goto("gate2", false)
+			]}
 		],
-		actions: [text("Click the door.")]
+		actions: [
+			text("When you hover over images, you can interact with them."),
+			text("Click the door to open.", {append:true}),
+			answers({
+				"A": "Or if you know how epiphany works, click here to skip straight to the portals."
+			}),
+			cond(() => getAnswer()=="A", goto("cats"))
+		]
 	},
 
-	cats: {
-		image: "cats.jpg",
+	gate2: {
+		image: "gateopen.png",
 		regions: [
-			{x: 2500, y: 2000, w: 400, h: 800, cursor: "north", actions: [goto("historian")]}
+			{x: 4000, y: 4000, w: 4000, h: 4000, cursor: "north", actions: [
+				goto("historian")
+			]}
 		],
+		actions: [
+			text("Looks like the Professor's here. Let's go in.")
+		]
 	},
 
 	historian: {
 		image: 'historian.jpg',
-		rightWidth: 500,
-		actions: [text("He looks busy.")],
+		// rightWidth: 500,
+		leftWidth: 551,
+		actions: [text("He looks deep in thought. Can you get his attention?")],
 		regions: [
 			{x:1500, y:2150, w:320, h:620, cursor:"bubble", actions:
 				[
-					text("Historian: Ehmmm...                   You're here because...?"),
+					text("Grumble...", {attr:"class='historian'"}),
+				]},
+
+			{x:320, y:1300, w:200, h:200, cursor:"speaker", actions:
+				[
+					audio("audio/XC936224 - Carrion Crow - Corvus corone edit.wav"),
+					text("CAW! CAW!"),
+					wait(2000),
+					text("Ehmmm...       You're here because...? ", {append:true, attr:"class='historian'; style='display:block; margin-top: 10px';"}),
+
 					answers({
 						"A": "I want to learn about the Epiphany. I heard you are the only historian in this and neighboring solar systems to research its ancient mysteries."
 					}),
-					text("Historian: And what have you heard about the Epiphany?"),
+					text("And what have you heard about the Epiphany?", {attr:"class='historian';"}),
 					answers({
 						"A": "It was a deep winter festival where friends made art together, turning their experiences into gifts.",
 						"B": "It was an ephemeral art collective who enticed the divine to sing through its members.",
 						"C": "It was an investigation into wild generosity, to intuit how to inhabit the long view."
 					}),
-					cond(() => getAnswer()=="A", text("Historian: Deep winter festival? Correct. See the example on the right.")),
-					cond(() => getAnswer()=="B", text("Historian: Ephemeral art collective? Correct. See the example on the right.")),
-					cond(() => getAnswer()=="C", text("Historian: Wild generosity? Correct. See the example on the right.")),
+					cond(() => getAnswer()=="A", text("Deep winter festival? Correct. See the example on the right.", {attr:"class='historian';"})),
+					cond(() => getAnswer()=="B", text("Ephemeral art collective? Correct. See the example on the right.", {attr:"class='historian';"})),
+					cond(() => getAnswer()=="C", text("Wild generosity? Correct. See the example on the right.", {attr:"class='historian';"})),
+					rightClear(),
 					rightImage("https://www.mit.edu/~mcusi/epiphany/past/2024/papillon_front_small.png"),
 					answers({
 						"A": "Okay, I see.",
 					}),
 
-					text("Historian: And look at the back there's poems and stuff."),
+					text("And look at the back there's poems and stuff.", {attr:"class='historian';"}),
+					rightClear(),
 					rightImage("https://www.mit.edu/~mcusi/epiphany/past/2024/papillon_back_trimmed.png"),
 					answers({
 						"A": "That's cool.",
 					}),
+					text("Now, go see the other people. They're on the door to the right.", {attr:"class='historian';"})
+				]
+			},
+			
+			{x:1300, y:1200, w:300, h:300, cursor:"speaker", actions: [
+				audio("audio/XC934498 - Barn Swallow - Hirundo rustica edit.wav"),
+				text("Swallowwww")
+			]},
 
-					text("Now, go see the other people. They're on the door to the right.")
-				]},
+			{x:750, y:3200, w:300, h:300, cursor:"speaker", actions: [
+				audio("audio/XC950738 - Grey Partridge - Perdix perdix edit.wav"),
+				text("Quaillll")
+			]},
+			{x:1500, y:3150, w:600, h:400, cursor:"speaker", actions: [
+				audio("audio/XC952178 - Indian Peafowl - Pavo cristatus edit.wav"),
+				text("Peaaacockkk")
+			]},
 
-			{x:400, y:2100, w:300, h:700, cursor:"north", actions: [goto("Au-Bonheur")]},
-			{x:1250, y:3200, w:2500, h:350, cursor:"south", actions: [goto("gate")]},
+			{x:2100, y:3300, w:250, h:150, cursor:"speaker", actions: [
+				audio("audio/708457__aprilmbatha__audio_taps-on-metal-bowl_owi edit copy 2.wav"),
+				text("Bowwwwlllll")
+			]},
 
-			{x:2200, y:2000, w:300, h:700, cursor:"north", actions: [goto("cats")]},
+
+			{x:2200, y:2200, w:200, h:200, cursor:"speaker", actions: [
+				audio("audio/458902__eardeer__lion-roars-2 edit copy.wav"),
+				text("Roarrrrr!")
+			]},
+
+			{x:700, y:2500, w:150, h:150, cursor:"speaker", actions: [
+				audio("audio/732520__lukey1028__young-cat-meow.mp3"),
+				text("Meow!")
+			]},
+
+			
+
+			
+			// {x:400, y:2100, w:300, h:700, cursor:"north", actions: [goto("Au-Bonheur")]},
+			// {x:1250, y:3200, w:2500, h:350, cursor:"south", actions: [goto("gate2")]},
+
+			{x:2200, y:1800, w:300, h:500, cursor:"north", actions: [goto("cats")]},
 			// {x:790, y:306, w:58, h:28, cursor:"bubble", actions: [set("eye", "brown"), goto("landingspot")]},
 			// {x:790, y:380, w:57, h:26, cursor:"bubble", actions: [set("eye", "hazel"), goto("landingspot")]},
 			// {x:790, y:451, w:58, h:26, cursor:"bubble", actions: [set("eye", "green"), goto("landingspot")]},
 			// {x:790, y:526, w:57, h:28, cursor:"bubble", actions: [set("eye", "grey"), goto("landingspot")]}
 		]
 	},
+
+	
+	cats: {
+		image: "cats.jpg",
+		// rightWidth: 500,
+		leftWidth: 1192,
+		actions: [
+			text("Stopping here, wanderer?", {attr:"class='weaver'"}),
+			text("Welcome.", {attr:"class='cat1'", append:true}),
+			text("Have you come far?", {append:true, attr:"class='cat2'", append:true}),
+			
+			answers({
+				"A": "There's my star in the night sky... I've come to learn about the Epiphany. Why did you take the professor's cards?",
+				"B": "I followed that star here. La Befana sent me to find you, but I had to stop off at the professor's first..."
+			}),
+
+			cond(() => getAnswer()=="B", text("Wonderful, is she well?", {attr:"class='dancer'"})),
+			cond(() => getAnswer()=="B", 
+				text("Since our dear ones are scattered over many galaxies, I've woven portals into the interweb. These make it possible to join from other solar systems.", {attr:"class='weaver'", append:true})
+			),
+
+			cond(() => getAnswer()=="A", text("Hehehe", {attr:"class='cat1'"})),
+			cond(() => getAnswer()=="A", text("Hahahah", {attr:"class='dancer'", append:true})),
+			cond(() => getAnswer()=="A", text("heh...", {attr:"class='cat2'", append:true})),
+			cond(() => getAnswer()=="A", text("Please, join us for Epiphany. You will understand after you've been all mixed up.", {attr:"class='dancer'", append:true})),
+			cond(() => getAnswer()=="A", answers({
+				"A": "How do I join?"
+			})),
+
+			cond(() => getAnswer()=="A", 
+				text("Since our dear ones are scattered over many galaxies, I've woven portals into the interweb. These make it possible to join from other solar systems.", {attr:"class='weaver'", append:false})
+			),
+			// text("But, as the professor must've told you, there are many steps to our divination... there is a portal for each one.", {attr:"class='dancer'", append:true}),
+
+			rightHtml(
+				"<b>PROPOSE IMAGES</b> - asynchronous<br/>" +
+				"<ul>" +
+					"<li><b>What?</b> We pool together images that might become characters.</li>" +
+					"<li><b>How?</b> You can use this form or just drag images into this Google Drive.</li>" +
+					"<li><b>When?</b> Do this by XXX.</li>" +
+				"</ul>"
+			),
+
+			rightHtml(
+				"<b>CHOOSE IMAGES</b> - synchronous<br/>" +
+				"<ul>" +
+					"<li><b>What?</b> We vote in rounds until we're left with a few images.</li>" +
+					"<li><b>How?</b> We'll meet here to place tiles as our votes.</li>" +
+					"<li><b>When?</b> XXX</li>" +
+				"</ul>"
+			),
+
+			rightHtml(
+				"<b>SEED POEMS</b> - asynchronous<br/>" +
+				"<ul>" +
+					"<li><b>What?</b> Add some ideas for each card, to inspire the next portal.</li>" +
+					"<li><b>How?</b> We'll have some forms ready to use.</li>" +
+					"<li><b>When?</b> not available yet</li>" +
+				"</ul>"
+			),
+
+			rightHtml(
+				"<b>WRITE POEMS</b> - synchronous<br/>" +
+				"<ul>" +
+					"<li><b>What?</b> Iterative rounds of writing until the poem is done. Each round is short & sweet.</li>" +
+					"<li><b>How?</b> For each card, we'll meet [tbd] and write in a joint google doc.</li>" +
+					"<li><b>When?</b> not available yet</li>" +
+				"</ul>"
+			),
+
+			rightHtml(
+				"<b>MAKE CARDS</b> - in person<br/>" +
+				"<ul>" +
+					"<li><b>What?</b> Make collages based off the poems and images</li>" +
+					"<li><b>How?</b> Hanging out!</li>" +
+					"<li><b>When?</b> tbd</li>" +
+				"</ul>"
+			)
+		],
+
+		regions: [
+			{x: 2500, y: 2000, w: 400, h: 800, cursor: "north", actions: [goto("historian")]}
+		],
+	},
+
+
 
 	inventory: {
 		image: 'https://selency.imgix.net/4756d09b-4f0a-4b2d-b903-33971be605d6/large-distressed-turkish-rug-285x200-cm-tribal-wool-vintage-pink-red-beige_original.png?bg=0FFF&fit=fill&auto=format%2Ccompress&w=600&h=600&meta_format=product_og',

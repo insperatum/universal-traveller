@@ -16,14 +16,23 @@ cond = function(pred, action) { return function(onComplete=function(){}) {
 	}
 }}
 
-text = function(value) { return function(onComplete=function(){}) {
-    clear_text()
+text = function(value, {append=false, attr=""}={}) { return function(onComplete=function(){}) {
+	if(!append) {
+		clear_text()
+	}
+	// Creat a new element
+	var a = $("<span " + attr + "></span>");
+	$(".text").append(a);
+	console.log(attr)
+	console.log(a)
+
     function typewriter(iteration) {
         if (iteration == value.length) {
-			onComplete()
+			setTimeout(onComplete, 500)
+			// onComplete()
 		} else {
 	        text_anim = setTimeout(function() {
-	            $('.text').text(value.slice(0, iteration+1));
+	            a.text(value.slice(0, iteration+1));
 	            typewriter(iteration+1);
 	        }, 35);
 	    }
@@ -32,11 +41,19 @@ text = function(value) { return function(onComplete=function(){}) {
     typewriter(0);
 }}
 
+audio = function(src) { return function(onComplete=function(){}) {
+	var a = new Audio(src)
+	a.play()
+	onComplete()
+	// a.onended = onComplete
+	// a.play()
+}}
+
 answers = function(dict) { return function(onComplete=function(){}) {
 	for (var key in dict) {
 		if (dict.hasOwnProperty(key)) {
 			(function(key) {
-				var a = $("<div style='padding-top:0.5em; cursor: pointer; color: yellow;'></div>").attr("class", "answer").text("> " + dict[key])
+				var a = $("<div class='ans'></div>").attr("class", "answer").text("> " + dict[key])
 
 				a.click(function() {
 					console.log("clicked" + key)
@@ -56,40 +73,68 @@ answers = function(dict) { return function(onComplete=function(){}) {
 }}
 getAnswer = () => localStorage.getItem("answer")
 
-rightImage = function(image) { return function(onComplete=function(){}) {
+rightClear = function() { return function(onComplete=function(){}) {
 
-	var f = function() {
-		var a = $(".right").append($("<img/>").attr("src", image).attr("width", "100%"))
-		a.css("opacity", 0)
-		a.animate({'opacity': 1}, 800, "swing", onComplete)
+	f = function() {
+		$(".right").empty()
+		onComplete()
 	}
 
 	// If it's not empty, fade out
 	if($(".right").children().length > 0) {
-		$(".right").children().animate({'opacity': 0}, 300, "swing", function() {
-			$(".right").empty()
-			f()
-		})
+		$(".right").children().animate({'opacity': 0}, 300, "swing", f)
 	} else {
 		f()
 	}
+}}
+
+rightImage = function(image) { return function(onComplete=function(){}) {
+	var a = $("<img/>").attr("src", image).attr("width", "100%")
+	a.css("opacity", 0)
+	$(".right").append(a)
+	a.animate({'opacity': 1}, 800, "swing", function() {
+		setTimeout(onComplete, 500)
+	})
+}}
+
+rightText = function(text) { return function(onComplete=function(){}) {
+	var a = $("<div class='rightText'></div>").text(text)
+	a.css("opacity", 0)
+	$(".right").append(a)
+	a.animate({'opacity': 1}, 800, "swing", function() {
+		setTimeout(onComplete, 500)
+	})
+}}
+
+rightHtml = function(html) { return function(onComplete=function(){}) {
+	var a = $("<div class='rightText'></div>").html(html)
+	a.css("opacity", 0)
+	$(".right").append(a)
+	a.animate({'opacity': 1}, 800, "swing", function() {
+		setTimeout(onComplete, 500)
+	})
 }}
 
 set = function(key, value) { return function() {
 	localStorage.setItem(key, value)
 }}
 
+wait = function(time) { return function(onComplete=function(){}) {
+	setTimeout(onComplete, time)
+}}
 
 doActions = function(actions) {
 	actions[0](onComplete=function(){
 		if(actions.length > 1) {
-			doActions(actions.slice(1))
+			// setTimeout(function() {
+				doActions(actions.slice(1))
+			// }, 500)
 		}
 	})
 }
 
 
-goto = function(key) { return function() {
+goto = function(key, fade=true) { return function() {
 	localStorage.setItem("previousView", localStorage.getItem("currentView"))
 	localStorage.setItem("currentView", key)
 
@@ -100,20 +145,27 @@ goto = function(key) { return function() {
         var w = this.width; var h = this.height;
 
 		$(".right").animate({'opacity': 0}, 200, "swing")
-        $(".inner").animate({'opacity': 0}, 400, "swing", function() {
+
+		f = function() {
 			$(".inner").empty()
 			$(".right").empty()
 			
 	        $(".inner").append(new_img)
-	        $(".inner").animate({'opacity': 1}, 800, "swing")
-			$(".right").css("width", 'rightWidth' in view ? view['rightWidth'] + "px" : "0")
+	        $(".inner").animate({'opacity': 1}, fade ? 800 : 0, "swing")
+			// $(".right").css("width", 'rightWidth' in view ? view['rightWidth'] + "px" : "0")
+			$(".left").css("width", 'leftWidth' in view ? view['leftWidth'] + "px" : "")
 			$(".right").animate({'opacity': 1}, 200, "swing")
 	        clear_text()
 	        // if('text' in view) {
 	        // 	$(".text").text(view['text'])
 	        // }
         
-			if('actions' in view) {doActions(view['actions'])}
+			if('actions' in view) {
+				// Wait 500ms
+				setTimeout(function() {
+					doActions(view['actions'])
+				}, 1000)
+			}
 
 			view['regions'].forEach(function (region) {
 				if('item' in region && localStorage.getItem(region['item'])) {
@@ -156,7 +208,14 @@ goto = function(key) { return function() {
 				}
 				$(".inner").append(a);
 			})
-		})
+		}
+
+		if(fade) {
+			$(".inner").animate({'opacity': 0}, fade ? 400 : 0, "swing", f)
+		} else {
+			f()
+		}
+        
 	});
 	
 }}
